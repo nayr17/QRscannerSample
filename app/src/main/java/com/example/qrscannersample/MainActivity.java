@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recyclerView=(RecyclerView)findViewById(R.id.recyleView);
+
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         helper = new DbHelper(this);
@@ -76,6 +77,7 @@ public class MainActivity extends AppCompatActivity
                 ListItem listItem = arrayList.get(position);
 
                 //remove data from database
+
                 helper.deleteRow(listItem.getId());
 
                 arrayList.remove(position);
@@ -104,12 +106,11 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode,resultCode,data);
 
-        if(result !=null)
+        if(result!=null)
         {
             if(result.getContents() == null)
             {
